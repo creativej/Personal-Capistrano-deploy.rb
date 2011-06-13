@@ -1,24 +1,9 @@
-# replace these with your server's information
-set :domain, "creativej.me"
-set :user, "root"
-
-# name this the same thing as the directory on your server
-set :application, "6thsensedesign.com"
-
-# use your local repository as the source
-set :repository, "file://#{File.expand_path('.')}"
-
-# or use a hosted repository
-set :repository, "ssh://git-creativej@pl3.projectlocker.com:6thsensedesign.git"
-
 server "#{domain}", :app, :web, :db, :primary => true
 
 set :deploy_via, :copy
 set :copy_exclude, [".git", ".DS_Store"]
 set :scm, :git
 set :branch, "master"
-
-set :app_root, "/var/www/vhosts/creativej.me/"
 
 # set this path to be correct on yoru server
 set :deploy_to, "#{app_root}#{application}"
@@ -45,6 +30,16 @@ namespace :my_setup do
 	DESC
 
 	task :default do
-		run "git clone #{repository} #{deploy_to}"
+		run "git clone #{repository_path} #{deploy_to}"
 	end
 end
+
+namespace :whois do 
+	desc <<-DESC
+	Test capistrano
+	DESC
+	
+	task :default do 
+		run "jwhois --version"
+	end
+end 
