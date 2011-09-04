@@ -19,7 +19,7 @@ namespace :deploy do
 	DESC
 	
 	task :default do
-		run "cd #{deploy_to}; git pull --rebase origin master"
+		run "cd #{deploy_to}; git pull origin master"
 	end
 end
 
