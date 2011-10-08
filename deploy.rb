@@ -40,6 +40,6 @@ namespace :whois do
 	DESC
 	
 	task :default do 
-		run "jwhois --version"
+		run "uname -a"
 	end
 end 
